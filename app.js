@@ -34,6 +34,7 @@ app.use(express.static("public")); //look for static files in public folder
 app.use(express.urlencoded({ extended: true })); //collects form data
 app.set("view engine", "ejs"); //view engine setup
 app.use(expressLayouts); //Express EJS layout to make views into block
+app.use(express.json())
 
 //must come after above middleware and before routes
 //this creates a session which determines how long
@@ -65,6 +66,7 @@ app.use(function(req, res, moveOn) {
 //all routes
 app.use("/user", require("./routes/user.route"));
 app.use("/auth", require("./routes/auth.route"));
+app.use("/cat", require("./routes/cat.route"));
 
 
 
