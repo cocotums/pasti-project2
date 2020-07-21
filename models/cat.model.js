@@ -8,25 +8,29 @@ const catSchema = Schema({
         required: true,
     },
     description: {
-        type: Array,
+        type: String,
         required: false,
     },
-    address: {
+    location: {
         type: String,
         required: true,
     },
-    location: {
-        type: {
-            type: String,
-            enum: ["Point"],
-        },
-        coordinates: {
-            type: [Number],
-            index: "2dsphere",
-        },
-        formattedAddress: String,
+    // location: {
+    //     type: {
+    //         type: String,
+    //         enum: ["Point"],
+    //     },
+    //     coordinates: {
+    //         type: [Number],
+    //         index: "2dsphere",
+    //     },
+    //     formattedAddress: String,
+    // },
+    lastSeen: {
+        type: Date,
+        default: Date.now,
     },
-    createdAt: {
+    lastFed: {
         type: Date,
         default: Date.now,
     },

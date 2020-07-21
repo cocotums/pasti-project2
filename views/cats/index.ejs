@@ -1,0 +1,18 @@
+<table border="1">
+    <thead>
+        <tr>
+            <td>Name</td>
+        </tr>
+    </thead>
+    <% cats.forEach(cat => {%>
+        <tr>
+            <td>
+                <%= cat.name %>
+            </td>
+            <td>
+                <a href="/cat/show/<%= cat._id %>">View</a>
+
+            </td>
+        </tr>
+        <% }) %>
+</table>
