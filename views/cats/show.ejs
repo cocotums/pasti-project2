@@ -9,9 +9,17 @@
 <div>Location:
     <%= cat.location %>
 </div>
-<div>Last Seen:
+<div>
+
+    <form action="/cat/see/<%= cat._id %>" method="POST">
+        <button type="submit">Did you see this cat?</button>
+    </form>
+    Last Seen:
     <%= cat.lastSeen %>
 </div>
-<div>Last Fed:
+<div>
+    <form action="/cat/feed/<%= cat._id %>" method="POST">
+        <button type="submit">Did you see and feed this cat?</button>
+    </form>Last Fed:
     <%= cat.lastFed %>
 </div>

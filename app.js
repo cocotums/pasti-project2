@@ -25,10 +25,7 @@ mongoose.connect(
     }
 );
 
-//check check mic check
-app.get("/", (req, res) => {
-    res.render("home");
-});
+
 
 app.use(express.static("public")); //look for static files in public folder
 app.use(express.urlencoded({ extended: true })); //collects form data
@@ -61,7 +58,10 @@ app.use(function(req, res, moveOn) {
     moveOn();
 });
 
-
+//check check mic check
+app.get("/", (req, res) => {
+    res.render("home");
+});
 
 //all routes
 app.use("/user", require("./routes/user.route"));

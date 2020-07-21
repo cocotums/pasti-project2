@@ -15,6 +15,11 @@ const catSchema = Schema({
         type: String,
         required: true,
     },
+    imgUrl: String,
+    // imgUrls: [{
+    //     path: String,
+    //     featured: Boolean
+    // }],
     // location: {
     //     type: {
     //         type: String,

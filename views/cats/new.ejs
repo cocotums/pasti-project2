@@ -1,7 +1,7 @@
 <div class="container mt-3">
     <h2>New Cat</h2>
 
-    <form action="/cat/new" method="post">
+    <form action="/cat/new" method="post" enctype="multipart/form-data">
         <div>
             <label>Name</label>
             <input name="name" placeholder="Fluffy" />
@@ -13,6 +13,10 @@
         <div>
             <label>Location</label>
             <input name="location" type="text" placeholder="Which neighbourhood?" />
+        </div>
+        <div>
+            <label>Location</label>
+            <input name="imgUrl" type="file" />
         </div>
 
 
