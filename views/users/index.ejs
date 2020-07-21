@@ -1,1 +1,17 @@
-<h1>user index</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Cat Friends</td>
+        </tr>
+    </thead>
+    <% users.forEach(cat => {%>
+        <tr>
+            <td>
+                <img width="200" height="auto" src="<%= user.imgUrl %>" />
+                <%= user.username %>
+
+            </td>
+
+        </tr>
+        <% }) %>
+</table>

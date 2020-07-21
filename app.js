@@ -63,6 +63,7 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
+
 //all routes
 app.use("/user", require("./routes/user.route"));
 app.use("/auth", require("./routes/auth.route"));

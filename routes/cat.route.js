@@ -37,7 +37,7 @@ router.post("/new", upload.single("imgUrl"), (req, res) => {
     cat
         .save()
         .then(() => {
-            res.send("iz workz");
+            res.redirect("/cat");
         })
         .catch((err) => {
             console.log(err);

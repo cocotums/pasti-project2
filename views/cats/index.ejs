@@ -1,4 +1,4 @@
-<table border="1">
+<table>
     <thead>
         <tr>
             <td>Name</td>
@@ -9,9 +9,10 @@
             <td>
                 <img width="200" height="auto" src="<%= cat.imgUrl %>" />
                 <%= cat.name %>
+                    <%= cat.location %>
             </td>
             <td>
-                <a href="/cat/show/<%= cat._id %>">View</a>
+                <a href="/cat/show/<%= cat._id %>" class="btn btn-primary btn-block">View</a>
 
             </td>
         </tr>

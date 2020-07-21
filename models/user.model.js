@@ -19,6 +19,7 @@ const userSchema = Schema({
         type: String,
         required: true,
     },
+    imgUrl: String,
     // {
     //     profilePic: {
     //         type: Image,
