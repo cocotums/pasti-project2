@@ -2,7 +2,7 @@
     <h2>Hi new cat friend!</h2>
     <h6>Please enter your details below...</h6>
 
-    <form action="/auth/register" method="post">
+    <form action="/auth/register" method="post" enctype="multipart/form-data">
         <div>
             <label>Name</label>
             <input name="name" placeholder="John Doe" />
@@ -19,7 +19,10 @@
             <label>Password</label>
             <input name="password" type="password" placeholder="******" />
         </div>
-
+        <div>
+            <label>Image</label>
+            <input name="imgUrl" type="file" />
+        </div>
         <button type="submit">Create User</button>
     </form>
 </div>

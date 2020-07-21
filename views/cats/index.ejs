@@ -1,15 +1,19 @@
 <table>
     <thead>
         <tr>
-            <td>Name</td>
+            <td>All cats</td>
         </tr>
     </thead>
     <% cats.forEach(cat => {%>
         <tr>
             <td>
-                <img width="200" height="auto" src="<%= cat.imgUrl %>" />
+                <img width="200" height="200" src="<%= cat.imgUrl %>" />
+            </td>
+            <td>
                 <%= cat.name %>
-                    <%= cat.location %>
+            </td>
+            <td>
+                <%= cat.location %>
             </td>
             <td>
                 <a href="/cat/show/<%= cat._id %>" class="btn btn-primary btn-block">View</a>

@@ -22,11 +22,11 @@ passport.deserializeUser(function(id, done) {
 
 passport.use(
     new LocalStrategy({
-            usernameField: "email",
+            usernameField: "username",
             passwordField: "password",
         },
-        function(email, password, done) {
-            User.findOne({ email: email }, function(err, user) {
+        function(username, password, done) {
+            User.findOne({ username: username }, function(err, user) {
                 if (err) {
                     return done(err);
                 }

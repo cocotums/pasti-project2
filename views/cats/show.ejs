@@ -1,25 +1,35 @@
-<h2>
-    Cat</h2>
-<div>Name:
-    <%= cat.name %>
-</div>
-<div>Description:
-    <%= cat.description %>
-</div>
-<div>Location:
-    <%= cat.location %>
-</div>
-<div>
+<div class="col mx-auto">
+    <h2>
+        Cat</h2>
+    <br>
+    <div>Name:
+        <%= cat.name %>
+    </div>
+    <div>Description:
+        <%= cat.description %>
+    </div>
+    <div>Location:
+        <%= cat.location %>
+    </div>
+    <div>
 
-    <form action="/cat/see/<%= cat._id %>" method="POST">
-        <button type="submit">Did you see this cat?</button>
-    </form>
-    Last Seen:
-    <%= cat.lastSeen %>
-</div>
-<div>
-    <form action="/cat/feed/<%= cat._id %>" method="POST">
-        <button type="submit">Did you see and feed this cat?</button>
-    </form>Last Fed:
-    <%= cat.lastFed %>
+        <br>
+        <br>
+        <form action="/cat/see/<%= cat._id %>" method="POST">
+            <button type="submit" class="btn btn-warning ">Did you see this cat?</button>
+        </form>
+        Last Seen:
+        <%= moment(cat.lastSeen).format(shortDateFormat) %>
+    </div>
+
+
+    <br>
+    <br>
+    <div>
+        <form action="/cat/feed/<%= cat._id %>" method="POST">
+            <button type="submit" class="btn btn-warning ">Did you see and feed this cat?</button>
+        </form>Last Fed:
+        <%= moment(cat.lastFed).format(shortDateFormat) %>
+    </div>
+
 </div>

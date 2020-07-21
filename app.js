@@ -6,6 +6,8 @@ const passport = require("./library/passportConfig");
 const session = require("express-session");
 const flash = require("connect-flash");
 const checkUser = require("./library/blockCheck");
+let moment = require("moment");
+let shortDateFormat = 'MMMM Do YYYY, h:mm:ss a';
 require("dotenv").config();
 
 
@@ -58,6 +60,9 @@ app.use(function(req, res, moveOn) {
     moveOn();
 });
 
+
+app.locals.moment = moment;
+app.locals.shortDateFormat = shortDateFormat;
 //check check mic check
 app.get("/", (req, res) => {
     res.render("home");
