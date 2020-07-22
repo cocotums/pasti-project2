@@ -15,25 +15,38 @@ require("dotenv").config();
 ===================
 Connect to MongoDB 
 */
-mongoose.connect(
-    process.env.MONGODBURL, {
+const PORT = process.env.PORT;
+// mongoose.connect(
+//     process.env.MONGODBLIVE, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//         useCreateIndex: true,
+//         useFindAndModify: false,
+//     },
+//     () => {
+//         console.log("MongoDB connected!");
+//     }
+// );
+mongoose.Promise = Promise;
+mongoose
+    .connect(process.env.MONGODBLIVE, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
-        useFindAndModify: false,
-    },
-    () => {
-        console.log("MongoDB connected!");
-    }
-);
-
+    })
+    .then(() => {
+        console.log("mongodb is running!");
+    })
+    .catch((e) => {
+        console.log(e);
+    });
 
 
 app.use(express.static("public")); //look for static files in public folder
 app.use(express.urlencoded({ extended: true })); //collects form data
 app.set("view engine", "ejs"); //view engine setup
 app.use(expressLayouts); //Express EJS layout to make views into block
-app.use(express.json())
+
 
 //must come after above middleware and before routes
 //this creates a session which determines how long
