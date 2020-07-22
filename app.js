@@ -78,6 +78,13 @@ app.locals.moment = moment;
 app.locals.shortDateFormat = shortDateFormat;
 //check check mic check
 app.get("/", (req, res) => {
+    res.send("home");
+});
+app.get("/about", (req, res) => {
+    res.send("about page");
+});
+
+app.get("/", (req, res) => {
     res.render("home");
 });
 
