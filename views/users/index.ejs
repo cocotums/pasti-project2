@@ -1,3 +1,10 @@
+<style>
+    .userpic {
+        height: 100px;
+        object-fit: cover;
+    }
+</style>
+
 <table>
     <thead>
         <tr>
@@ -7,7 +14,7 @@
     <% users.forEach(user => {%>
         <tr>
             <td>
-                <img width="50" height="50" src="<%= user.imgUrl %>" />
+                <img class="userpic" src="<%= user.imgUrl %>" />
                 <%= user.username %>
 
             </td>
