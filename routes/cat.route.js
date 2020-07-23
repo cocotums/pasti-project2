@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Cat = require("../models/cat.model");
 const multer = require("multer")
+const gcsSharp = require('multer-sharp');
 const path = require('path')
 
 var storage = multer.diskStorage({
@@ -10,38 +11,59 @@ var storage = multer.diskStorage({
     filename: function(req, file, cb) {
         //file with unique names
         let fileExtension = path.extname(file.originalname).split(".")[1];
-        cb(null, file.fieldname + "-" + Date.now() + "." + fileExtension);
+        cb(null, "catphoto-" + Date.now() + "." + fileExtension);
     }
 });
-var upload = multer({ storage: storage });
+var upload = multer({ storage: storage }).array("imgUrl", 3);
+
 
 
 router.get("/new", (req, res) => {
     res.render("cats/new");
 });
 // .../users/users
-router.post("/new", upload.single("imgUrl"), (req, res) => {
-    console.log(req.body);
-    const file = req.file
+router.post("/new", (req, res) => {
 
-    let catData = {
-        name: req.body.name,
-        description: req.body.description,
-        location: req.body.location,
-    }
+    // const file = req.file
 
 
-    let cat = new Cat(catData);
-    console.log(cat);
-    cat.imgUrl = "/uploads/" + file.filename
-    cat
-        .save()
-        .then(() => {
-            res.redirect("/cat");
-        })
-        .catch((err) => {
-            console.log(err);
+    // let cat = new Cat(catData);
+    // console.log(cat);
+    // // cat.imgUrl = "/uploads/" + file.filename
+
+    upload(req, res, function(err) {
+        console.log(req.body);
+        console.log(req.files);
+        if (err) {
+            console.log("Error uploading file.", err);
+        }
+        let imgUrls = req.files.map((file, i) => {
+            return {
+                path: `uploads/${file.filename}`,
+                featured: i == 0 ? true : false
+            };
         });
+        let catData = {
+            name: req.body.name,
+            description: req.body.description,
+            location: req.body.location,
+            imgUrls,
+        }
+        let cat = new Cat(catData);
+
+        cat
+            .save()
+            .then(() => {
+                res.redirect("/cat");
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+
+
+    });
+
+
 });
 
 /* show single cat */

@@ -1,9 +1,19 @@
+<style>
+    .catphoto {
+        height: 300px;
+    }
+</style>
+
 <div class="col mx-auto">
+
+
     <h2>
-        Cat</h2>
-    <br>
-    <div>Name:
         <%= cat.name %>
+    </h2>
+    <div>
+        <% cat.imgUrls.forEach(url => { %>
+            <img class="catphoto" src="/<%= url.path %>" />
+            <% }); %>
     </div>
     <div>Description:
         <%= cat.description %>
